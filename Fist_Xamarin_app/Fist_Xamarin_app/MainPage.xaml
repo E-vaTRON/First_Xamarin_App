@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:data="clr-namespace:Fist_Xamarin_app.Models"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             mc:Ignorable="d"
+             x:Class="Fist_Xamarin_app.MainPage">
+
+
+    <Grid VerticalOptions="FillAndExpand"
+          CompressedLayout.IsHeadless="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="Pen.png" Aspect="Fill" HeightRequest="250" VerticalOptions="StartAndExpand" BackgroundColor="BlueViolet"/>
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout VerticalOptions="Center">
+                <Label Text="Electronic Store" FontSize="30" TextColor="White"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Center">
+                <Label Text="Life Like The Way You Are" HorizontalOptions="Center" FontSize="10" TextColor="White"/>
+            </StackLayout>
+        </StackLayout>
+        <Frame Grid.Row="1"  HasShadow="True" CornerRadius="10" Margin="20,-50,20,0" Padding="5 " HeightRequest="120" VerticalOptions="StartAndExpand">
+
+           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Orientation="Vertical" Spacing="9" HorizontalOptions="CenterAndExpand">
+                    <Image Source="Camera.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <Label Text="Camera" TextColor="#7d7D7D" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="9" HorizontalOptions="CenterAndExpand">
+                    <Image Source="Laptop.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <Label Text="Laptop" TextColor="#7D7D7D" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="9" HorizontalOptions="CenterAndExpand">
+                    <Image Source="PC.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <Label Text="NewPC" TextColor="#7D7D7D" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="9" HorizontalOptions="CenterAndExpand">
+                    <Image Source="SmartPhone.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <Label Text="Phone" TextColor="#7D7D7D" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Grid.Column="4" Orientation="Vertical" Spacing="9" HorizontalOptions="CenterAndExpand">
+                    <Image Source="KeyBoard.png" HeightRequest="25" HorizontalOptions="Center"/>
+                    <Label Text="Gear" TextColor="#7D7D7D" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+
+        <StackLayout Grid.Row="2" BackgroundColor="Transparent" Orientation="Horizontal" Margin="20" HorizontalOptions="End"
+                     >
+            <ImageButton x:Name="ListBt" Source="DeviceList.png" WidthRequest="15" HeightRequest="15"/>
+        </StackLayout>
+
+        <ListView x:Name="CameraList" SeparatorVisibility="None" Grid.Row="3" Margin="20,0" 
+                  HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowHeight="200"
+                  android:ListView.IsFastScrollEnabled="true">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:Camera">
+                    <ViewCell>
+                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" Orientation="Vertical" Margin="20,0" VerticalOptions="Center">
+                                    <Image HeightRequest="25"/>
+                                    <Label Text="{x:Binding Brand}" FontSize="12"/>
+                                    <Label Text="{x:Binding Model}" TextColor="Black" FontSize="12"/>
+                                    <Label Text="{x:Binding Zoom}" TextColor="Black" FontSize="12" />
+                                    <Label Text="{x:Binding Price}" TextColor="Black" FontSize="12" VerticalOptions="End"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage> 
